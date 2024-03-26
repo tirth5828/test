@@ -97,6 +97,8 @@ def load_data(root_dir):
                 if os.path.isfile(file_path) and file.endswith('.jpeg'):
                     # Load the image
                     img = Image.open(file_path)
+                    
+                    img.resize((10, 10))
                     # Convert the image to numpy array
                     img_array = np.array(img)
                     # Append the image array and its label to the data list
@@ -111,7 +113,7 @@ data, labels = load_data(root_dir)
 print("Data shape:", data.shape)
 print("Labels:", labels)
 
-def preprocess_data(data, labels, test_size=0.2):
+def preprocess_data(data, labels, test_size=0.33):
     # Flatten the image data
     data_flattened = data.reshape(data.shape[0], -1)
     
